@@ -51,7 +51,7 @@ npm i axios
 Клонировать репозиторий
 
 ```bash
-git clone git@github.com:JuliaKrasnova2008/online-shop-react.git
+git clone git@github.com:JuliaKrasnova2008/posts-react-bootstrap.git
 ```
 
 Установить зависимости
