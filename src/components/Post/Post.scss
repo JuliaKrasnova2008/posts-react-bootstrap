@@ -1,9 +1,34 @@
-.post__title {
-  width: 60%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.post {
+  width: 20rem;
+  .post__title {
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-text {
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 50px;
+    max-height: 50px;
+  }
 }
+
+// .post__big-size {
+//   width: 47%;
+//   font-size: 18px;
+//   .post__title {
+//     font-weight: 600;
+//   }
+//   .card-text {
+//     white-space: pre;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     min-height: 80px;
+//     max-height: 80px;
+//   }
+// }
 
 .post__btn {
   margin: 0;
@@ -11,4 +36,14 @@
   display: flex;
   justify-content: flex-start;
   gap: 5px;
+}
+
+.post__aliceblue {
+  background-color: aliceblue;
+}
+.post__darkorange {
+  background-color: darkorange;
+}
+.post__navajowhite {
+  background-color: navajowhite;
 }

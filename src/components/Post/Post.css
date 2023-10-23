@@ -1,8 +1,18 @@
-.post__title {
+.post {
+  width: 20rem;
+}
+.post .post__title {
   width: 60%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.post .card-text {
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 50px;
+  max-height: 50px;
 }
 
 .post__btn {
@@ -15,4 +25,16 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   gap: 5px;
+}
+
+.post__aliceblue {
+  background-color: aliceblue;
+}
+
+.post__darkorange {
+  background-color: darkorange;
+}
+
+.post__navajowhite {
+  background-color: navajowhite;
 }
