@@ -4,10 +4,23 @@ import Button from 'react-bootstrap/Button';
 
 import './Post.css'
 import MyVerticallyCenteredModal from '../ModalView/ModalView';
+import { useDispatch } from 'react-redux';
+import StaticExample from '../ModalDelete/ModalDelete';
+import { deletePost } from '../../redux/slices/articlesReducer';
 
 export default function Post({ elem, bigSizePost }) {
+    const dispatch = useDispatch()
+
     //модалка
     const [modalShow, setModalShow] = useState(false)
+    const [modalShowDelete, setModalShowDelete] = useState(false)
+
+    function handleDelete() {
+        dispatch(deletePost(elem))
+        setModalShowDelete(true)
+    }
+
+
 
     //цвет карточек
     const [colorCard, setColorCard] = useState('white')
@@ -23,10 +36,12 @@ export default function Post({ elem, bigSizePost }) {
         }
     }
 
+    const isOwn = elem.isOwn
+
     return (
         <>
             <Card
-                style={bigSizePost ? { width: '47%', fontSize: '18px' } : { width: '20rem' }}
+                style={bigSizePost ? { width: '47%', fontSize: '18px' } : { width: '32%' }}
                 className={colorCard === 'white' && 'post' ||
                     colorCard === 'aliceblue' && 'post post__aliceblue' ||
                     colorCard === 'darkorange' && 'post post__darkorange' ||
@@ -49,6 +64,16 @@ export default function Post({ elem, bigSizePost }) {
                         onClick={changeColor}
                     >Change color</Button>{' '}
                 </div>
+                {isOwn &&
+                    <div className='post__btn'>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={() => setModalShowDelete(true)}
+                        >Delete</Button>
+                    </div>
+
+                }
+
             </Card>
 
             <MyVerticallyCenteredModal
@@ -56,6 +81,9 @@ export default function Post({ elem, bigSizePost }) {
                 onHide={() => setModalShow(false)}
                 elem={elem}
             />
+            <StaticExample show={modalShowDelete} setModalShowDelete={setModalShowDelete} handleDelete={handleDelete} />
+
+
         </>
 
     )

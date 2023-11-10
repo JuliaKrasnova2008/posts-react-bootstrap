@@ -6,14 +6,16 @@ import ArticleList from '../../components/ArticleList/ArticleList';
 export default function Home() {
     //Выводим 3 записи по умолчанию, 
     const articles = useSelector((state) => state.articles.posts)
-    const [max, setMax] = useState(3)
+    console.log(articles);
+
+    const [max, setMax] = useState(90)
     const [countPosts, setCountPosts] = useState(3)
     const [isBlocked, setIsBlocked] = useState(false)
     const [isBig, setIsBig] = useState("Make big cards")
 
     //кнопку можно кликать до тех пор, пока все записи не будут получены, когда они кончаться, кнопка скрывается.
     useEffect(() => {
-        if (countPosts >= articles.length) {
+        if (countPosts >= articles?.length) {
             setIsBlocked(true)
         }
     }, [countPosts, articles])
@@ -39,7 +41,7 @@ export default function Home() {
     return (
         <div className='home'>
             <ArticleList
-                articles={articles.slice(0, countPosts)}
+                articles={articles?.slice(0, countPosts)}
                 loadMore={loadMore}
                 isBlocked={isBlocked}
                 makeBigCards={makeBigCards}

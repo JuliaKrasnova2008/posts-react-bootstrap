@@ -6,18 +6,21 @@ import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { setPosts } from "../../redux/slices/articlesReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Home from "../../pages/Home/Home";
 import Users from "../../pages/Users/Users";
 import Photos from "../../pages/Photos/Photos";
 
 function App() {
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.articles.posts);
   //данные по постам
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((json) => {
-      dispatch(setPosts(json.data));
-    });
+    if (!posts.length) {
+      axios.get("https://jsonplaceholder.typicode.com/posts").then((json) => {
+        dispatch(setPosts(json.data));
+      });
+    }
   }, []);
 
   return (
